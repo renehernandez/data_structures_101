@@ -9,9 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["aegis"]
   spec.email         = ["renehr9102@gmail.com"]
 
-  spec.summary       = %q{Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{Write a longer description or delete this line.}
-  spec.homepage      = "https://github.com/renehernandez/bok-data_structures_101.git"
+  spec.summary       = %q{DataStructures101 is a simple gem that groups several implementations of common data structures usually taught in Computer Science courses.}
+  spec.homepage      = "https://github.com/renehernandez/bok-data_structures_101"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
