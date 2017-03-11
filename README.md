@@ -1,4 +1,4 @@
-# DataStructures101
+# DataStructures101 [![Build Status](https://travis-ci.org/renehernandez/bok-data_structures_101.svg?branch=master)](https://travis-ci.org/renehernandez/bok-data_structures_101)
 
 DataStructures101 is a simple gem that groups several implementations of common data structures usually taught in Computer Science courses. The overall goal of the gem is to provide easy to use functionality (trying to match the behavior of existent structures in Ruby) while providing the user with a framework to test and compare their implementations against.
 
@@ -38,7 +38,7 @@ For more information in the `LinkedList` class, check [this post](https://bitsof
 
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add specs for any new or changed functionality and tests it using RSpec.
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/data_structures_101.
+Bug reports and pull requests are welcome on GitHub at https://github.com/renehernandez/data_structures_101.
 
 ## License
 
