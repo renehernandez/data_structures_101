@@ -69,36 +69,20 @@ module DataStructures101
       self
     end
 
-    def first(*args)
-      if args.size == 0
-        return @head.next.value
-      end
+    def first(n = nil)
+      return @head.next.value if n.nil?
 
-      if args.size > 1
-        raise ArgumentError, "wrong number of arguments (given #{args.size}, expected 1)"
-      end
+      raise ArgumentError, "negative array size" if n < 0
 
-      if args.first < 0
-        raise ArgumentError, "negative array size"
-      end
-
-      return new_list_from_range(0, args.first - 1)
+      return new_list_from_range(0, n - 1)
     end
 
-    def last(*args)
-      if args.size == 0
-        return @tail.prev.value
-      end
+    def last(n = nil)
+      return @tail.prev.value if n.nil?
+    
+      raise ArgumentError, "negative array size" if n < 0
 
-      if args.size > 1
-        raise ArgumentError, "wrong number of arguments (given #{args.size}, expected 1)"
-      end
-
-      if args.first < 0
-        raise ArgumentError, "negative array size"
-      end
-
-      return new_list_from_range(size - args.first, size - 1)
+      return new_list_from_range(size - n, size - 1)
     end
 
     def push(*values)

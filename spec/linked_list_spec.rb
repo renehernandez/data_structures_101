@@ -92,10 +92,6 @@ RSpec.describe DataStructures101::LinkedList do
 
   context '#last' do
 
-    it 'raises ArgumentError if number of args is greater than 1' do
-      expect {list.last(20, 4,22)}.to raise_error(ArgumentError, "wrong number of arguments (given 3, expected 1)")
-    end
-
     it 'raises ArgumentError if arg is negative' do
       expect {list.last(-10)}.to raise_error(ArgumentError, "negative array size")
     end
@@ -140,11 +136,7 @@ RSpec.describe DataStructures101::LinkedList do
 
   end
 
-  context '#delete' do
-
-    it 'raises ArgumentError if number of args is greater than 1' do
-      expect {list.first(1, 25)}.to raise_error(ArgumentError, "wrong number of arguments (given 2, expected 1)")
-    end
+  context '#first' do
 
     it 'raises ArgumentError if arg is negative' do
       expect {list.first(-14)}.to raise_error(ArgumentError, "negative array size")
