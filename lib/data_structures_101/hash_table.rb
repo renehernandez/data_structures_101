@@ -16,7 +16,7 @@ module DataStructures101
                 create_table
             end
 
-            def [](key, value)
+            def []=(key, value)
                 old_value = bucket_insert(hash_value(key), key, value)
 
                 # keep load factor <= 0.5
@@ -60,10 +60,6 @@ module DataStructures101
 
             def initialize()
                 @table = []
-            end
-
-            def [](key, value)
-                insert(key, value)
             end
 
             def [](key)

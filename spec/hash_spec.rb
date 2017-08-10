@@ -98,4 +98,10 @@ RSpec.describe DataStructures101::Hash::Bucket do
             expect(loaded_bucket.size).to eql(old_size - 1)
         end
     end
+
+    context '#[] as #find' do
+        it 'returns the same' do
+            expect(loaded_bucket['test']).to eql(loaded_bucket.find('test'))
+        end
+    end
 end
