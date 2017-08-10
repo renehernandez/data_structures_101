@@ -62,6 +62,14 @@ module DataStructures101
                 @table = []
             end
 
+            def [](key, value)
+                insert(key, value)
+            end
+
+            def [](key)
+                find(key)
+            end
+
             def insert(key, value)
                 idx = @table.find_index {|_key, _| _key == key} 
 
@@ -88,8 +96,8 @@ module DataStructures101
                 return nil if idx.nil?
 
                 value = @table[idx][1]
-                @table[idx] = @table.pop
-
+                @table[idx] = @table.last if idx != @table.size - 1
+                @table.pop
                 value
             end
 

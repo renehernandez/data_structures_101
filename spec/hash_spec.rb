@@ -25,7 +25,7 @@ RSpec.describe DataStructures101::Hash::Bucket do
 
     let!(:loaded_bucket) do 
         res = DataStructures101::Hash::Bucket.new
-        res.insert('test', :test)
+        res.insert('test', 42)
         res
     end
 
@@ -44,7 +44,6 @@ RSpec.describe DataStructures101::Hash::Bucket do
     end
 
     context '#insert' do 
-
         it 'returns nil if key is new' do
             result = bucket.insert(1, '1')
             expect(result).to be_nil
@@ -58,7 +57,7 @@ RSpec.describe DataStructures101::Hash::Bucket do
 
         it 'returns the previous value if key is present' do
             result = loaded_bucket.insert('test', '')
-            expect(result).to eql(:test)
+            expect(result).to eql(42)
         end
 
         it 'keeps the same size if key is present' do
@@ -74,7 +73,29 @@ RSpec.describe DataStructures101::Hash::Bucket do
         end
 
         it 'returns the correct value' do 
-            expect(loaded_bucket.find('test')).to eql(:test)
+            expect(loaded_bucket.find('test')).to eql(42)
+        end
+    end
+
+    context '#delete' do
+        it 'returns the value of deleted pair' do
+            expect(loaded_bucket.delete('test')).to eql(42)
+        end
+
+        it 'returns nil if key not present' do
+            expect(loaded_bucket.delete(:hello)).to be_nil
+        end
+        
+        it 'keeps the same size if key not present' do
+            old_size = loaded_bucket.size
+            loaded_bucket.delete(40)
+            expect(loaded_bucket.size).to eql(old_size)
+        end
+
+        it 'reduces size by one if key is deleted' do
+            old_size = loaded_bucket.size
+            loaded_bucket.delete('test')
+            expect(loaded_bucket.size).to eql(old_size - 1)
         end
     end
 end
