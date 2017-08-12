@@ -26,7 +26,6 @@ RSpec.describe DataStructures101::ChainHashTable do
     end
 
     context '#insert' do
-
         it 'increases size by one if key not present' do 
             old_size = hash_table.size
             hash_table.insert(1, "1")
@@ -49,12 +48,20 @@ RSpec.describe DataStructures101::ChainHashTable do
     end
 
     context "#[]=" do
-
         it 'returns the new value as result' do
             expect(loaded_hash[3] = 3).to eql(3)
         end
     end
 
+    context "#[]" do
+        it 'returns nil if key not present' do
+            expect(hash_table[:hello]).to be_nil
+        end
+
+        it 'returns the value if key is present' do
+            expect(loaded_hash[4]).to eql(20)
+        end
+    end
 end
 
 RSpec.describe DataStructures101::Hash::Bucket do

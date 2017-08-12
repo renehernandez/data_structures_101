@@ -91,6 +91,7 @@ module DataStructures101
             end
 
             def find(key)
+                puts "Bucket find is called"
                 pair = @table.find {|_key, _| _key == key}
                 pair.nil? ? nil : pair[1]
             end
@@ -111,8 +112,6 @@ module DataStructures101
 
     class ChainHashTable < Hash::BaseHashTable
 
-        include Enumerable
-
         def initialize(capacity = 31, prime = 109345121)
             super
             @table = []
@@ -123,7 +122,7 @@ module DataStructures101
         def bucket_find(hash_code, key)
             bucket = @table[hash_code]
             return nil if bucket.nil?
-
+            
             bucket.find(key)
         end
 
