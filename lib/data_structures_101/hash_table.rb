@@ -17,13 +17,17 @@ module DataStructures101
             end
 
             def []=(key, value)
+                insert(key, value)
+            end     
+
+            def insert(key, value)
                 old_value = bucket_insert(hash_value(key), key, value)
 
                 # keep load factor <= 0.5
-                resize(new_capacity) if @size > @cap / 2
+                resize(new_capacity) if @size > @capacity / 2
 
                 old_value
-            end     
+            end
             
             def [](key)
                 bucket_find(hash_value(key), key)
@@ -35,7 +39,7 @@ module DataStructures101
 
             private
             def hash_value(key)
-                (((key.hash * @scale + @shift) % @prime) % @cap).abs
+                (((key.hash * @scale + @shift) % @prime) % @capacity).abs
             end
 
             def new_capacity()
@@ -64,6 +68,10 @@ module DataStructures101
 
             def [](key)
                 find(key)
+            end
+
+            def []=(key, value)
+                insert(key, value)
             end
 
             def insert(key, value)
@@ -121,7 +129,7 @@ module DataStructures101
 
         def bucket_insert(hash_code, key, value)
             bucket = @table[hash_code]
-            bucket = @table[hash_code] = Bucket.new if bucket.nil?
+            bucket = @table[hash_code] = Hash::Bucket.new if bucket.nil?
 
             old_size = bucket.size()
             old_value = bucket.insert(key, value)
