@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-RSpec.describe DataStructures101::ChainHashTable do
+RSpec.describe DataStructures101::ChainedHashTable do
 
-    let!(:hash_table) { DataStructures101::ChainHashTable.new }
+    let!(:hash_table) { DataStructures101::ChainedHashTable.new }
 
     let!(:loaded_hash) do
-        h = DataStructures101::ChainHashTable.new
+        h = DataStructures101::ChainedHashTable.new
         h[4] = 20
         h
     end
