@@ -2,7 +2,7 @@ module DataStructures101
 
     class ChainedHashTable < Hash::BaseHashTable
 
-        def initialize(capacity = 31, prime = 109345121)
+        def initialize(capacity = 31, prime = 109345121, hash_lambda = nil)
             super
             @table = []
         end

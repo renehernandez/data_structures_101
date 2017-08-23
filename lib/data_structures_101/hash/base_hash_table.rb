@@ -2,9 +2,9 @@ module DataStructures101
     module Hash
         class BaseHashTable
 
-            attr_reader :size, :hash_value
+            attr_reader :size, :hash_lambda
 
-            def initialize(capacity, prime, hash_value = nil) 
+            def initialize(capacity, prime, hash_lambda = nil) 
                 @capacity = capacity
                 @size = 0
 
@@ -12,10 +12,10 @@ module DataStructures101
                 scale = random.rand(prime - 1) + 1
                 shift = random.rand(prime)
                 
-                @hash_value =   if hash_value.nil?                                   
+                @hash_lambda =   if hash_lambda.nil?                                   
                                     ->(key) { return (((key.hash * scale + shift) % prime) % @capacity).abs }
                                 else
-                                    hash_value
+                                    hash_lambda
                                 end
                 create_table
             end
@@ -25,7 +25,7 @@ module DataStructures101
             end     
 
             def insert(key, value)
-                old_value = bucket_insert(hash_value.call(key), key, value)
+                old_value = bucket_insert(hash_lambda.call(key), key, value)
 
                 # keep load factor <= 0.5
                 resize(new_capacity) if @size > @capacity / 2
@@ -34,11 +34,11 @@ module DataStructures101
             end
             
             def [](key)
-                bucket_find(hash_value.call(key), key)
+                bucket_find(hash_lambda.call(key), key)
             end
 
             def delete(key)
-                bucket_delete(hash_value.call(key), key)
+                bucket_delete(hash_lambda.call(key), key)
             end
 
             private
