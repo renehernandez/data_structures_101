@@ -33,7 +33,6 @@ module DataStructures101
             end
 
             def find(key)
-                puts "Bucket find is called"
                 pair = @table.find {|_key, _| _key == key}
                 pair.nil? ? nil : pair.last
             end

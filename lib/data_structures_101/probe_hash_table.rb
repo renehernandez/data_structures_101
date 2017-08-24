@@ -1,5 +1,7 @@
+require 'singleton'
+
 module DataStructures101
-    class ProbeHashTable
+    class ProbeHashTable < Hash::BaseHashTable
 
         def initialize(capacity = 31, prime = 109345121, hash_lambda = nil)
             super
@@ -18,6 +20,17 @@ module DataStructures101
         end
 
         def bucket_insert(hash_code, key, value)
+            idx = find_slot(hash_code, key)
+
+            if !slot_available?(idx)
+                old_value = @table[idx].last
+                @table[idx] = [key, value]
+                return old_value
+            end
+            
+            @table[idx] = [key, value]
+            @size += 1
+            return nil
         end
         
         def bucket_delete(hash_code, key)

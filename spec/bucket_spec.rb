@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 RSpec.describe DataStructures101::Hash::Bucket do
-    let!(:bucket) { DataStructures101::Hash::Bucket.new }
+    let(:bucket) { DataStructures101::Hash::Bucket.new }
 
-    let!(:loaded_bucket) do 
+    let(:loaded_bucket) do 
         res = DataStructures101::Hash::Bucket.new
         res.insert('test', 42)
         res
@@ -79,7 +79,7 @@ RSpec.describe DataStructures101::Hash::Bucket do
         end
     end
 
-    context '#[] as #find' do
+    context '#[]' do
         it 'returns the same' do
             expect(loaded_bucket['test']).to eql(loaded_bucket.find('test'))
         end

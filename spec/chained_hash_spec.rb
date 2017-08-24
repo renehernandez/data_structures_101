@@ -2,9 +2,9 @@ require 'spec_helper'
 
 RSpec.describe DataStructures101::ChainedHashTable do
 
-    let!(:hash_table) { DataStructures101::ChainedHashTable.new }
+    let(:hash_table) { DataStructures101::ChainedHashTable.new }
 
-    let!(:loaded_hash) do
+    let(:loaded_hash) do
         h = DataStructures101::ChainedHashTable.new
         h[4] = 20
         h
