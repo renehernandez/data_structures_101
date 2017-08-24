@@ -35,14 +35,14 @@ module DataStructures101
             def find(key)
                 puts "Bucket find is called"
                 pair = @table.find {|_key, _| _key == key}
-                pair.nil? ? nil : pair[1]
+                pair.nil? ? nil : pair.last
             end
 
             def delete(key) 
                 idx = @table.find_index {|_key, _| _key == key}
                 return nil if idx.nil?
 
-                value = @table[idx][1]
+                value = @table[idx].last
                 @table[idx] = @table.last if idx != @table.size - 1
                 @table.pop
                 value

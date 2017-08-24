@@ -4,7 +4,6 @@ module DataStructures101
 
         def initialize(capacity = 31, prime = 109345121, hash_lambda = nil)
             super
-            @table = []
         end
 
         private
@@ -36,10 +35,6 @@ module DataStructures101
             @size -= (old_size - bucket.size)
 
             value
-        end
-
-        def create_table()
-            @table = Array.new(@capacity)
         end
     end
 end

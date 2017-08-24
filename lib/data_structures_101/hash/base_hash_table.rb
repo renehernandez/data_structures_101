@@ -7,7 +7,8 @@ module DataStructures101
             def initialize(capacity, prime, hash_lambda = nil) 
                 @capacity = capacity
                 @size = 0
-
+                @table = Array.new(@capacity)
+                
                 random = Random.new
                 scale = random.rand(prime - 1) + 1
                 shift = random.rand(prime)
@@ -17,7 +18,6 @@ module DataStructures101
                                 else
                                     hash_lambda
                                 end
-                create_table
             end
 
             def []=(key, value)
