@@ -3,8 +3,17 @@ require 'singleton'
 module DataStructures101
     class ProbeHashTable < Hash::BaseHashTable
 
-        def initialize(capacity = 31, prime = 109345121, hash_lambda = nil)
-            super
+        attr_reader :probe_lambda
+
+        def initialize(capacity = 31, prime = 109345121, 
+                        hash_lambda = nil, probe_lambda = nil)
+            super(capacity, prime, hash_lambda)
+
+            @probe_lambda = if probe_lambda.nil?
+                                ->(h, i) { return (h + i) % @capacity }
+                            else
+                                probe_lambda
+                            end
         end
 
         private
@@ -30,7 +39,7 @@ module DataStructures101
             
             @table[idx] = [key, value]
             @size += 1
-            
+
             nil
         end
         
@@ -48,16 +57,16 @@ module DataStructures101
         def find_slot(h, key)
             idx = -1
 
-            i = h
+            j = 0
             loop do
+                i = @probe_lambda.call(h, j)
                 if slot_available?(i)
                     idx = i if idx == -1
                     break if @table[i].nil?
                 elsif @table[i].first == key
                     return i
                 end
-
-                i = (i + 1) % @capacity
+                j += 1
             end
 
             idx
