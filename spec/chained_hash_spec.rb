@@ -84,4 +84,14 @@ RSpec.describe DataStructures101::ChainedHashTable do
             expect(loaded_hash.size).to eql(old_size - 1)
         end
     end
+
+    context "#each" do
+        it 'returns enum if no block given' do
+            expect(hash_table.each).to be_a(Enumerator)
+        end
+
+        it 'yields args if block given' do
+            expect { |b| loaded_hash.each(&b) }.to yield_control.at_least(1)
+        end
+    end
 end

@@ -1,8 +1,9 @@
 module DataStructures101  
     module Hash
         class BaseHashTable
+            include Enumerable
 
-            attr_reader :size, :hash_lambda
+            attr_reader :size, :hash_lambda, :capacity
 
             def initialize(capacity, prime, hash_lambda = nil) 
                 @capacity = capacity
@@ -39,6 +40,14 @@ module DataStructures101
 
             def delete(key)
                 bucket_delete(hash_lambda.call(key), key)
+            end
+
+            def each
+                return enum_for(:each) unless block_given?
+
+                bucket_each do |key, value|
+                    yield(key, value) 
+                end
             end
 
             private
