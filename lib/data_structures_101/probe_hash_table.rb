@@ -30,10 +30,19 @@ module DataStructures101
             
             @table[idx] = [key, value]
             @size += 1
-            return nil
+            
+            nil
         end
         
         def bucket_delete(hash_code, key)
+            idx = find_slot(hash_code, key)
+            return nil if slot_available?(idx)
+
+            value = @table[idx].last
+            @table[idx] = Sentinel.instance
+            @size -= 1
+
+            value
         end
 
         def find_slot(h, key)
