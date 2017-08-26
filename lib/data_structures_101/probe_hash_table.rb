@@ -54,6 +54,14 @@ module DataStructures101
             value
         end
 
+        def bucket_each
+            @table.each do |elem|
+                next if elem.nil? || elem == Sentinel.instance
+
+                yield(elem.first, elem.last)
+            end
+        end
+
         def find_slot(h, key)
             idx = -1
 

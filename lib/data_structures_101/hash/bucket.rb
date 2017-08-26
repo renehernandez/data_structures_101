@@ -28,7 +28,7 @@ module DataStructures101
                 end
             end
 
-            def size()
+            def size
                 @table.size
             end
 
@@ -47,6 +47,13 @@ module DataStructures101
                 value
             end
 
+            def each
+                return enum_for(:each) unless block_given?
+
+                @table.each do |key, value|
+                    yield(key, value)
+                end
+            end
         end
     end
 end
