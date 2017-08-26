@@ -2,11 +2,6 @@ sudo: false
 language: ruby
 rvm:
 - 2.4.0
-branches:
-  only:
-  - master
-  - release
-  - develop
 script: bundle exec rspec
 deploy:
   provider: rubygems
