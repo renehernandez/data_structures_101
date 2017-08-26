@@ -1,4 +1,4 @@
-# DataStructures101 [![Build Status](https://travis-ci.org/renehernandez/bok-data_structures_101.svg?branch=master)](https://travis-ci.org/renehernandez/bok-data_structures_101)
+# DataStructures101 [![Build Status](https://travis-ci.org/renehernandez/data_structures_101.svg?branch=master)](https://travis-ci.org/renehernandez/bok-data_structures_101) [![Gem Version](https://badge.fury.io/rb/data_structures_101.svg)](https://badge.fury.io/rb/data_structures_101)
 
 DataStructures101 is a simple gem that groups several implementations of common data structures usually taught in Computer Science courses. The overall goal of the gem is to provide easy to use functionality (trying to match the behavior of existent structures in Ruby) while providing the user with a framework to test and compare their implementations against.
 
@@ -32,7 +32,7 @@ To create a LinkedList
 list = DataStructures101::LinkedList.new
 ```
 
-For more information in the `LinkedList` class, check [this post](https://bitsofknowledge.net/data-structures-101-linked-list) and read the documentation.
+For more information in the `LinkedList` class, check [this post](https://bitsofknowledge.net/2017/08/05/data-structures-101-linkedlist-implementation) and read the documentation.
 
 ## Contributing
 
