@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe DataStructures101::ProbeHashTable do
-    let(:hash_table) { DataStructures101::ProbeHashTable.new}
+    let(:hash_table) { DataStructures101::ProbeHashTable.new }
 
     let(:loaded_hash) do
         h = DataStructures101::ChainedHashTable.new
@@ -82,6 +82,16 @@ RSpec.describe DataStructures101::ProbeHashTable do
             old_size = loaded_hash.size
             loaded_hash.delete(4)
             expect(loaded_hash.size).to eql(old_size - 1)
+        end
+    end
+
+    context "#each" do
+        it 'returns enum if no block given' do
+            expect(hash_table.each).to be_a(Enumerator)
+        end
+
+        it 'yields args if block given' do
+            expect { |b| loaded_hash.each(&b) }.to yield_control.at_least(1)
         end
     end
 end

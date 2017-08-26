@@ -38,8 +38,6 @@ module DataStructures101
         end
 
         def bucket_each
-            return enum_for(:bucket_each) unless block_given?
-
             @table.each do |bucket|
                 next if bucket.nil?
                 
