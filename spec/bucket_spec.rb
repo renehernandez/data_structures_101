@@ -84,4 +84,14 @@ RSpec.describe DataStructures101::Hash::Bucket do
             expect(loaded_bucket['test']).to eql(loaded_bucket.find('test'))
         end
     end
+
+    context '#each' do
+        it 'returns enum if no block given' do
+            expect(bucket.each).to be_a(Enumerator)
+        end
+
+        it 'yields args if block given' do
+            expect { |b| loaded_bucket.each(&b) }.to yield_control.at_least(1)
+        end
+    end
 end

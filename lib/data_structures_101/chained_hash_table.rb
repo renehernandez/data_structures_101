@@ -36,5 +36,17 @@ module DataStructures101
 
             value
         end
+
+        def bucket_each
+            return enum_for(:bucket_each) unless block_given?
+
+            @table.each do |bucket|
+                next if bucket.nil?
+                
+                bucket.each do |key, value|
+                    yield(key, value)
+                end
+            end
+        end
     end
 end
