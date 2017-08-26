@@ -62,4 +62,26 @@ RSpec.describe DataStructures101::ChainedHashTable do
             expect(loaded_hash[4]).to eql(20)
         end
     end
+
+    context "#delete" do
+        it 'returns nil if key not present' do
+            expect(hash_table.delete(10)).to be_nil
+        end
+
+        it 'keeps the same size if key not present' do
+            old_size = loaded_hash.size
+            loaded_hash.delete(:done)
+            expect(loaded_hash.size).to eql(old_size)
+        end
+
+        it 'returns the value if key present' do
+            expect(loaded_hash.delete(4)).to eql(20)
+        end
+
+        it 'reduces size by one if key present' do
+            old_size = loaded_hash.size
+            loaded_hash.delete(4)
+            expect(loaded_hash.size).to eql(old_size - 1)
+        end
+    end
 end
