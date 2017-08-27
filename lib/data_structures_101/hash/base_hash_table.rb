@@ -3,20 +3,20 @@ module DataStructures101
         class BaseHashTable
             include Enumerable
 
-            attr_reader :size, :hash_lambda, :capacity
+            attr_reader :size, :compression_lambda, :capacity
 
-            def initialize(capacity:, prime:, hash_lambda:) 
+            def initialize(capacity:, prime:, compression_lambda:) 
                 @capacity = capacity
                 @size = 0
                 @table = Array.new(@capacity)
                            
-                @hash_lambda = hash_lambda
+                @compression_lambda = compression_lambda
                 
-                if @hash_lambda.nil?      
+                if @compression_lambda.nil?      
                     random = Random.new
                     scale = random.rand(prime - 1) + 1
                     shift = random.rand(prime)                             
-                    @hash_lambda = ->(key) { return (((key.hash * scale + shift) % prime) % @capacity).abs }
+                    @compression_lambda = ->(key, cap) { return (((key.hash * scale + shift) % prime) % cap).abs }
                 end
             end
 
@@ -25,7 +25,7 @@ module DataStructures101
             end     
 
             def insert(key, value)
-                old_value = bucket_insert(hash_lambda.call(key), key, value)
+                old_value = bucket_insert(compression_lambda.call(key, @capacity), key, value)
 
                 # keep load factor <= 0.5
                 resize(new_capacity) if @size > @capacity / 2
@@ -34,11 +34,11 @@ module DataStructures101
             end
             
             def [](key)
-                bucket_find(hash_lambda.call(key), key)
+                bucket_find(compression_lambda.call(key, @capacity), key)
             end
 
             def delete(key)
-                bucket_delete(hash_lambda.call(key), key)
+                bucket_delete(compression_lambda.call(key, @capacity), key)
             end
 
             def each
