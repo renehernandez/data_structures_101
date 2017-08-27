@@ -19,7 +19,7 @@ module DataStructures101
             bucket = @table[hash_code]
             bucket = @table[hash_code] = Hash::Bucket.new if bucket.nil?
 
-            old_size = bucket.size()
+            old_size = bucket.size
             old_value = bucket.insert(key, value)
             @size += (bucket.size - old_size)
 
