@@ -5,20 +5,19 @@ module DataStructures101
 
             attr_reader :size, :hash_lambda, :capacity
 
-            def initialize(capacity, prime, hash_lambda = nil) 
+            def initialize(capacity:, prime:, hash_lambda:) 
                 @capacity = capacity
                 @size = 0
                 @table = Array.new(@capacity)
+                           
+                @hash_lambda = hash_lambda
                 
-                random = Random.new
-                scale = random.rand(prime - 1) + 1
-                shift = random.rand(prime)
-                
-                @hash_lambda =   if hash_lambda.nil?                                   
-                                    ->(key) { return (((key.hash * scale + shift) % prime) % @capacity).abs }
-                                else
-                                    hash_lambda
-                                end
+                if @hash_lambda.nil?      
+                    random = Random.new
+                    scale = random.rand(prime - 1) + 1
+                    shift = random.rand(prime)                             
+                    @hash_lambda = ->(key) { return (((key.hash * scale + shift) % prime) % @capacity).abs }
+                end
             end
 
             def []=(key, value)

@@ -4,7 +4,7 @@ RSpec.describe DataStructures101::ProbeHashTable do
     let(:hash_table) { DataStructures101::ProbeHashTable.new }
 
     let(:loaded_hash) do
-        h = DataStructures101::ChainedHashTable.new
+        h = DataStructures101::ProbeHashTable.new
         h[4] = 20
         h
     end
@@ -97,7 +97,7 @@ RSpec.describe DataStructures101::ProbeHashTable do
 
     context "verify resize" do
         let(:twice_hash) do 
-            h = DataStructures101::ChainedHashTable.new(5)
+            h = DataStructures101::ProbeHashTable.new(capacity:5)
             2.times { |i| h[i] = i.to_s }
             h
         end
