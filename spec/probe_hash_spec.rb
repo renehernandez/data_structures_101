@@ -94,4 +94,24 @@ RSpec.describe DataStructures101::ProbeHashTable do
             expect { |b| loaded_hash.each(&b) }.to yield_control.at_least(1)
         end
     end
+
+    context "verify resize" do
+        let(:twice_hash) do 
+            h = DataStructures101::ChainedHashTable.new(5)
+            2.times { |i| h[i] = i.to_s }
+            h
+        end
+
+        it 'resizes to 2*cap - 1' do
+            previous_cap = twice_hash.capacity
+            twice_hash[3] = '3'
+            expect(twice_hash.capacity).to eql(2*previous_cap - 1)
+        end
+
+        it 'increase size only by one' do
+            previous_size = twice_hash.size
+            twice_hash[3] = '3'
+            expect(twice_hash.size).to eql(previous_size + 1)
+        end
+    end
 end

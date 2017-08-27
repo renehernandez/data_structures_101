@@ -52,16 +52,16 @@ module DataStructures101
 
             private
 
-            def new_capacity()
-                2 * capacity - 1
+            def new_capacity
+                2 * @capacity - 1
             end
 
-            def resize(new_capacity)
-                @capacity = new_capacity
+            def resize(new_cap)
+                @capacity = new_cap
 
                 buffer = self.map { |key, value| [key, value] }
 
-                create_table
+                @table = Array.new(@capacity)
                 @size = 0
 
                 buffer.each { |key, value| self[key] = value }
