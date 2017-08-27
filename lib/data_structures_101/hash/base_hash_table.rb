@@ -16,7 +16,7 @@ module DataStructures101
                     random = Random.new
                     scale = random.rand(prime - 1) + 1
                     shift = random.rand(prime)                             
-                    @compression_lambda = ->(key) { return (((key.hash * scale + shift) % prime) % @capacity).abs }
+                    @compression_lambda = ->(key, cap) { return (((key.hash * scale + shift) % prime) % cap).abs }
                 end
             end
 
@@ -25,7 +25,7 @@ module DataStructures101
             end     
 
             def insert(key, value)
-                old_value = bucket_insert(compression_lambda.call(key), key, value)
+                old_value = bucket_insert(compression_lambda.call(key, @capacity), key, value)
 
                 # keep load factor <= 0.5
                 resize(new_capacity) if @size > @capacity / 2
@@ -34,11 +34,11 @@ module DataStructures101
             end
             
             def [](key)
-                bucket_find(compression_lambda.call(key), key)
+                bucket_find(compression_lambda.call(key, @capacity), key)
             end
 
             def delete(key)
-                bucket_delete(compression_lambda.call(key), key)
+                bucket_delete(compression_lambda.call(key, @capacity), key)
             end
 
             def each
