@@ -61,7 +61,7 @@ module DataStructures101
 
                 buffer = self.map { |key, value| [key, value] }
 
-                create_table
+                @table = Array.new(@capacity)
                 @size = 0
 
                 buffer.each { |key, value| self[key] = value }
