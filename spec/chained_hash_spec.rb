@@ -109,8 +109,13 @@ RSpec.describe DataStructures101::ChainedHashTable do
         it 'resizes to 2*cap - 1' do
             previous_cap = twice_hash.capacity
             twice_hash[3] = '3'
-            expect(twice_hash.capacity).to eql(2 * previous_cap - 1)
+            expect(twice_hash.capacity).to eql(2*previous_cap - 1)
         end
 
+        it 'increase size only by one' do
+            previous_size = twice_hash.size
+            twice_hash[3] = '3'
+            expect(twice_hash.size).to eql(previous_size + 1)
+        end
     end
 end
