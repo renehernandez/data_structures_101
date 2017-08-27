@@ -101,7 +101,7 @@ RSpec.describe DataStructures101::ChainedHashTable do
 
     context "verify resize" do
         let(:twice_hash) do 
-            h = DataStructures101::ChainedHashTable.new(5)
+            h = DataStructures101::ChainedHashTable.new(capacity:5)
             2.times { |i| h[i] = i.to_s }
             h
         end

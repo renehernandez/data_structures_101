@@ -5,9 +5,8 @@ module DataStructures101
 
         attr_reader :probe_lambda
 
-        def initialize(capacity = 31, prime = 109345121, 
-                        hash_lambda = nil, probe_lambda = nil)
-            super(capacity, prime, hash_lambda)
+        def initialize(capacity: 31, prime: 109345121, hash_lambda: nil, probe_lambda: nil)
+            super(capacity: capacity, prime: prime, hash_lambda: hash_lambda)
 
             @probe_lambda = if probe_lambda.nil?
                                 ->(h, i) { return (h + i) % @capacity }
