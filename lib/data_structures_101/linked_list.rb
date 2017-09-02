@@ -1,15 +1,16 @@
-module DataStructures101
+# frozen_string_literal: true
 
+module DataStructures101
   class LinkedList
     include Enumerable
 
     class Node
       attr_accessor :value, :prev, :next
 
-      def initialize(value, prev = nil, _next = nil)
+      def initialize(value, previous_node = nil, next_node = nil)
         @value = value
-        @next = _next
-        @prev = prev
+        @prev = previous_node
+        @next = next_node
       end
 
       def to_s
@@ -46,10 +47,12 @@ module DataStructures101
       return_value
     end
 
-    def each(&block)
+    def each
+      return enum_for(:each) unless block_given?
+
       curr = head.next
       until curr.nil?
-        block.call(value)
+        yield curr.value
         curr = curr.next
       end
     end
@@ -61,7 +64,7 @@ module DataStructures101
     def insert(index, *values)
       curr = fetch_node(index)
 
-      curr = index < 0 ? curr : curr.prev
+      curr = index.negative? ? curr : curr.prev
 
       values.each do |value|
         curr = add_node(value, curr.next)
@@ -72,17 +75,17 @@ module DataStructures101
     def first(n = nil)
       return @head.next.value if n.nil?
 
-      raise ArgumentError, "negative array size" if n < 0
+      raise ArgumentError, 'negative array size' if n.negative?
 
-      return new_list_from_range(0, n - 1)
+      new_list_from_range(0, n - 1)
     end
 
     def last(n = nil)
       return @tail.prev.value if n.nil?
-    
-      raise ArgumentError, "negative array size" if n < 0
 
-      return new_list_from_range(size - n, size - 1)
+      raise ArgumentError, 'negative array size' if n.negative?
+
+      new_list_from_range(size - n, size - 1)
     end
 
     def push(*values)
@@ -95,10 +98,10 @@ module DataStructures101
     private
 
     def fetch_node(index)
-      index += size if index < 0
-      if index < 0 || index >= size
-        raise IndexError, "index #{index} outside of array bounds: #{-size}...#{size}"
-      end
+      index += size if index.negative?
+
+      error_msg = "index #{index} outside of array bounds: #{-size}...#{size}"
+      raise IndexError, error_msg if index.negative? || index >= size
 
       pos = 0
       curr = @head.next
@@ -127,9 +130,9 @@ module DataStructures101
     def new_list_from_range(start_index, finish_index)
       new_list = LinkedList.new
 
-      return new_list if size == 0 || start_index == size || finish_index == -1
+      return new_list if size.zero? || start_index == size || finish_index == -1
 
-      start_index = 0 if start_index < 0
+      start_index = 0 if start_index.negative?
       finish_index = size - 1 if finish_index >= size
 
       start_node = fetch_node(start_index)
@@ -142,7 +145,5 @@ module DataStructures101
 
       new_list
     end
-
   end
-
 end
