@@ -1,10 +1,11 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe DataStructures101::LinkedList do
-
   let!(:list) { DataStructures101::LinkedList.new }
 
-  let!(:loaded_list) { DataStructures101::LinkedList.new(1, :en, "hello", 5.0) }
+  let!(:loaded_list) { DataStructures101::LinkedList.new(1, :en, 'hello', 5.0) }
 
   context 'creating a new empty list' do
     it 'is not nil' do
@@ -12,7 +13,7 @@ RSpec.describe DataStructures101::LinkedList do
     end
 
     it 'does not raise error' do
-      expect {list}.not_to raise_error
+      expect { list }.not_to raise_error
     end
 
     it 'has size 0' do
@@ -26,16 +27,15 @@ RSpec.describe DataStructures101::LinkedList do
     end
 
     it 'does not raise error' do
-      expect {loaded_list}.not_to raise_error
+      expect { loaded_list }.not_to raise_error
     end
 
-    it "has size 4" do
+    it 'has size 4' do
       expect(loaded_list.size).to eql(4)
     end
   end
 
   context '#<<' do
-
     it 'increases size by one' do
       orig_size = loaded_list.size
       loaded_list << 'prueba'
@@ -45,15 +45,13 @@ RSpec.describe DataStructures101::LinkedList do
     it 'returns the same list object' do
       expect(list << 1).to be(list)
     end
-
   end
 
   context '#push' do
-
     it 'increases size by one' do
       orig_size = list.size
-      list.push 1
-      expect(list.size).to eql(orig_size +1)
+      list.push(1)
+      expect(list.size).to eql(orig_size + 1)
     end
 
     it 'returns the list without change if no elements is passed' do
@@ -74,13 +72,11 @@ RSpec.describe DataStructures101::LinkedList do
     it 'increases size by the number of elements' do
       orig_size = list.size
       list.push(4, 18.5, nil, [], {})
-      expect(list.size).to eql(5)
+      expect(list.size).to eql(orig_size + 5)
     end
-
   end
 
   context '#fetch' do
-
     it 'returns the first element' do
       expect(loaded_list.fetch(0)).to eql(1)
     end
@@ -91,9 +87,8 @@ RSpec.describe DataStructures101::LinkedList do
   end
 
   context '#last' do
-
     it 'raises ArgumentError if arg is negative' do
-      expect {list.last(-10)}.to raise_error(ArgumentError, "negative array size")
+      expect { list.last(-10) }.to raise_error(ArgumentError, 'negative array size')
     end
 
     it 'returns nil if list is empty and no args is passed' do
@@ -120,7 +115,7 @@ RSpec.describe DataStructures101::LinkedList do
       result = loaded_list.last(2)
       expect(result).to be_a DataStructures101::LinkedList
       expect(result.size).to eql(2)
-      expect(result.fetch(0)).to eql("hello")
+      expect(result.fetch(0)).to eql('hello')
       expect(result.fetch(1)).to eql(5.0)
     end
 
@@ -130,16 +125,14 @@ RSpec.describe DataStructures101::LinkedList do
       expect(result.size).to eql(4)
       expect(result.fetch(0)).to eql(1)
       expect(result.fetch(1)).to eql(:en)
-      expect(result.fetch(2)).to eql("hello")
+      expect(result.fetch(2)).to eql('hello')
       expect(result.fetch(3)).to eql(5.0)
     end
-
   end
 
   context '#first' do
-
     it 'raises ArgumentError if arg is negative' do
-      expect {list.first(-14)}.to raise_error(ArgumentError, "negative array size")
+      expect { list.first(-14) }.to raise_error(ArgumentError, 'negative array size')
     end
 
     it 'returns nil if no args and list size is 0' do
@@ -182,13 +175,12 @@ RSpec.describe DataStructures101::LinkedList do
   end
 
   context '#insert' do
-
     it 'raises IndexError if index is larger than size of bounds' do
-      expect {list.insert(10, 'fail')}.to raise_error(IndexError)
+      expect { list.insert(10, 'fail') }.to raise_error(IndexError)
     end
 
     it 'raises IndexError if negative index translate into position less than 0' do
-      expect {loaded_list.insert(-5, 'fail')}.to raise_error(IndexError)
+      expect { loaded_list.insert(-5, 'fail') }.to raise_error(IndexError)
     end
 
     it 'inserts the element at index 1' do
@@ -211,17 +203,15 @@ RSpec.describe DataStructures101::LinkedList do
 
     it 'inserts several elements after position 2 if index is -2' do
       orig_size = loaded_list.size
-      loaded_list.insert(-2, 'in', :the, "middle")
+      loaded_list.insert(-2, 'in', :the, 'middle')
       expect(loaded_list.size).to eql(orig_size + 3)
       expect(loaded_list.fetch(3)).to eql('in')
       expect(loaded_list.fetch(4)).to eql(:the)
       expect(loaded_list.fetch(5)).to eql('middle')
     end
-
   end
 
   context '#delete' do
-
     it 'returns nil if no element is present' do
       expect(loaded_list.delete(10)).to be_nil
     end
@@ -238,5 +228,4 @@ RSpec.describe DataStructures101::LinkedList do
       expect(res).to eql(:en)
     end
   end
-
 end

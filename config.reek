@@ -1,0 +1,6 @@
+TooManyStatements:
+  max_statements: 20
+
+UncommunicativeModuleName:
+  accept:
+    - DataStructures101
