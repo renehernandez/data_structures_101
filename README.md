@@ -1,4 +1,4 @@
-# DataStructures101 [![Build Status](https://travis-ci.org/renehernandez/data_structures_101.svg?branch=master)](https://travis-ci.org/renehernandez/bok-data_structures_101) [![Gem Version](https://badge.fury.io/rb/data_structures_101.svg)](https://badge.fury.io/rb/data_structures_101)
+# DataStructures101 [![Build Status](https://travis-ci.org/renehernandez/data_structures_101.svg)](https://travis-ci.org/renehernandez/data_structures_101) [![Gem Version](https://badge.fury.io/rb/data_structures_101.svg)](https://badge.fury.io/rb/data_structures_101)
 
 DataStructures101 is a simple gem that groups several implementations of common data structures usually taught in Computer Science courses. The overall goal of the gem is to provide easy to use functionality (trying to match the behavior of existent structures in Ruby) while providing the user with a framework to test and compare their implementations against.
 
