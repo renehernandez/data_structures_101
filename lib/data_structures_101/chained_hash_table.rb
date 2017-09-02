@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 module DataStructures101
+  # HashTable implementation using separate chaining strategy
+  # for collision-resolution
+  # It subclasses Hash::BaseHashTable
+  # @author Rene Hernandez
+  # @since 0.2
   class ChainedHashTable < Hash::BaseHashTable
     def initialize(capacity: 31, prime: 109_345_121, compression_lambda: nil)
       super

@@ -1,9 +1,16 @@
 # frozen_string_literal: true
 
 module DataStructures101
+  # @author Rene Hernandez
+  # @since 0.1
   class LinkedList
     include Enumerable
 
+    # Internal class to store a given value in the LinkedList.
+    # Provides reference to next and previous node in the list
+    # @see LinkedList
+    # @author Rene Hernandez
+    # @since 0.1
     class Node
       attr_accessor :value, :prev, :next
 

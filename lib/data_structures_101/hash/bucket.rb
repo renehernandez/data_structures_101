@@ -2,6 +2,10 @@
 
 module DataStructures101
   module Hash
+    # Utility class to manipulate (key, pairs) that have same hash code.
+    # @see ChainedHashTable
+    # @author Rene Hernandez
+    # @since 0.2
     class Bucket
       attr_reader :table
 

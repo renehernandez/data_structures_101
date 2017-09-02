@@ -3,6 +3,10 @@
 require 'singleton'
 
 module DataStructures101
+  # HashTable implementation using probing strategy for collision-resolution
+  # It subclasses Hash::BaseHashTable
+  # @author Rene Hernandez
+  # @since 0.2
   class ProbeHashTable < Hash::BaseHashTable
     attr_reader :probe_lambda
 

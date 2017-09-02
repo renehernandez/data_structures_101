@@ -1,7 +1,14 @@
 # frozen_string_literal: true
 
 module DataStructures101
+  # @author Rene Hernandez
+  # @since 0.2
   module Hash
+    # Abstract class for shared HashTable functionalities.
+    # @see ChainedHashTable
+    # @see ProbeHashTable
+    # @author Rene Hernandez
+    # @since 0.2
     class BaseHashTable
       include Enumerable
 

@@ -7,6 +7,8 @@ require 'data_structures_101/hash/bucket'
 require 'data_structures_101/chained_hash_table'
 require 'data_structures_101/probe_hash_table'
 
+# @author Rene Hernandez
+# @since 0.1
 module DataStructures101
   # Your code goes here...
 end
