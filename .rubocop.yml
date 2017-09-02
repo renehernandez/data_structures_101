@@ -8,8 +8,10 @@ Metrics/AbcSize:
 Metrics/CyclomaticComplexity:
   Max: 10
 Metrics/BlockLength:
-  Enabled: true
   Exclude: 
+    - spec/**/*
+Metrics/LineLength:
+  Exclude:
     - spec/**/*
 Style/FrozenStringLiteralComment:
   EnforcedStyle: always
