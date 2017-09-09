@@ -19,5 +19,8 @@
 *.sublime-project
 *.sublime-workspace
 
+# VS Code files
+.vscode
+
 # Gem files
 *.gem
