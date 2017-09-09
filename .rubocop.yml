@@ -1,9 +1,11 @@
 AllCops:
   TargetRubyVersion: 2.4
 Metrics/MethodLength:
-  Max: 25
+  Max: 30
   CountComments: false
 Metrics/AbcSize:
+  Exclude:
+    - spec/**/*
   Max: 20
 Metrics/CyclomaticComplexity:
   Max: 10
