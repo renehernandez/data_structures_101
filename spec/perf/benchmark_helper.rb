@@ -1,24 +1,24 @@
+# frozen_string_literal: true
+
 require 'bundler/setup'
 require 'data_structures_101'
 require 'benchmark/ips'
 require 'gruff'
 
-
 class BenchmarkHelper
-
   attr_reader :reports
 
   def initialize(time: 5, warmup: 2)
     @time = time
     @warmup = warmup
-    @reports = Hash.new {|hash, key| hash[key] = []}
+    @reports = Hash.new { |hash, key| hash[key] = [] }
   end
 
-  private
+  protected
 
   def graph_title
-    File.basename(@file, '.rb').split('_').
-          map(&:capitalize).join(' ')
+    File.basename(@file, '.rb').split('_')
+        .map(&:capitalize).join(' ')
   end
 
   def graph_name
@@ -34,7 +34,7 @@ class BenchmarkHelper
   end
 
   def do_report
-    return Benchmark.ips do |bench|
+    Benchmark.ips do |bench|
       bench.config(time: @time, warmup: @warmup)
 
       yield bench
@@ -44,10 +44,10 @@ class BenchmarkHelper
   end
 
   def self.range_labels
-    range.each_with_object({}).
-        with_index do |(val, hash), idx|
-          hash[idx] = commafy(val)
-        end
+    range.each_with_object({})
+         .with_index do |(val, hash), idx|
+           hash[idx] = commafy(val)
+         end
   end
 
   def self.range
@@ -55,11 +55,11 @@ class BenchmarkHelper
   end
 
   def self.commafy(num)
-    num.to_s.chars.reverse.
-      each_with_object("").
-      with_index do |(val, str), idx|
-        str.prepend((idx % 3).zero? ? val + ',' : val)
-      end.chop
+    num.to_s.chars.reverse
+       .each_with_object('')
+       .with_index do |(val, str), idx|
+         str.prepend((idx % 3).zero? ? val + ',' : val)
+       end.chop
   end
 
   def self.each_sample
@@ -68,4 +68,6 @@ class BenchmarkHelper
       yield Array.new(n) { rand(1...top) }
     end
   end
+
+  private_class_method :range, :commafy, :range_labels, :each_sample
 end

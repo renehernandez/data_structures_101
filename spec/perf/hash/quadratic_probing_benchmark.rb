@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../benchmark_helper'
 require_relative 'hash_methods'
 
@@ -9,7 +11,7 @@ class QuadraticProbingBenchmark < BenchmarkHelper
     @file ||= __FILE__
     @chained_hash = DataStructures101::ChainedHashTable.new
     @probe_hash = DataStructures101::ProbeHashTable.new(
-        probe_lambda: ->(h, i, cap) { return (h + i**2) % cap }
+      probe_lambda: ->(h, i, cap) { return (h + i**2) % cap }
     )
   end
 end

@@ -1,5 +1,6 @@
-module HashMethods
+# frozen_string_literal: true
 
+module HashMethods
   def benchmark_methods
     self.class.each_sample do |sample|
       report = do_report do |bench|
@@ -39,7 +40,6 @@ module HashMethods
 
   def graph
     reports.each do |name, rep_entries|
-
       g = Gruff::Bar.new
       g.title = "#{name.capitalize} for #{graph_title}"
       g.labels = self.class.range_labels
@@ -54,13 +54,13 @@ module HashMethods
       klass = 'ChainedHashTable'
       entries = rep_entries.map(&:entries).flatten
 
-      mean_values = entries.select { |e| e.label.start_with?(klass) }.
-          map { |e| e.stats.central_tendency }
+      mean_values = entries.select { |e| e.label.start_with?(klass) }
+                           .map { |e| e.stats.central_tendency }
       g.data(klass, mean_values)
 
       klass = 'ProbeHashTable'
-      mean_values = entries.select { |e| e.label.start_with?(klass) }.
-          map { |e| e.stats.central_tendency }
+      mean_values = entries.select { |e| e.label.start_with?(klass) }
+                           .map { |e| e.stats.central_tendency }
       g.data(klass, mean_values)
 
       g.write(output_file(name))
