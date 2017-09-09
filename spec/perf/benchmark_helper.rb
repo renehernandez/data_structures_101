@@ -14,6 +14,32 @@ class BenchmarkHelper
     @reports = Hash.new { |hash, key| hash[key] = [] }
   end
 
+  def self.range_labels
+    range.each_with_object({})
+         .with_index do |(val, hash), idx|
+           hash[idx] = commafy(val)
+         end
+  end
+
+  def self.range
+    [20_000, 40_000, 60_000, 80_000, 100_000]
+  end
+
+  def self.commafy(num)
+    num.to_s.chars.reverse
+       .each_with_object(''.dup)
+       .with_index do |(val, str), idx|
+         str.prepend((idx % 3).zero? ? val + ',' : val)
+       end.chop
+  end
+
+  def self.each_sample
+    range.each do |n|
+      top = 3 * n / 4
+      yield Array.new(n) { rand(1...top) }
+    end
+  end
+
   protected
 
   def graph_title
@@ -42,32 +68,4 @@ class BenchmarkHelper
       bench.compare!
     end
   end
-
-  def self.range_labels
-    range.each_with_object({})
-         .with_index do |(val, hash), idx|
-           hash[idx] = commafy(val)
-         end
-  end
-
-  def self.range
-    [20_000, 40_000, 60_000, 80_000, 100_000]
-  end
-
-  def self.commafy(num)
-    num.to_s.chars.reverse
-       .each_with_object('')
-       .with_index do |(val, str), idx|
-         str.prepend((idx % 3).zero? ? val + ',' : val)
-       end.chop
-  end
-
-  def self.each_sample
-    range.each do |n|
-      top = 3 * n / 4
-      yield Array.new(n) { rand(1...top) }
-    end
-  end
-
-  private_class_method :range, :commafy, :range_labels, :each_sample
 end
