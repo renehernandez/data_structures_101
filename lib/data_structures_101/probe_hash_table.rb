@@ -19,7 +19,7 @@ module DataStructures101
 
       return unless @probe_lambda.nil?
 
-      @probe_lambda = ->(h, i) { return (h + i) % @capacity }
+      @probe_lambda = ->(h, i, cap) { return (h + i) % cap }
     end
 
     private
@@ -73,7 +73,7 @@ module DataStructures101
 
       j = 0
       loop do
-        i = @probe_lambda.call(h, j)
+        i = @probe_lambda.call(h, j, @capacity)
         if slot_available?(i)
           idx = i if idx == -1
           break if @table[i].nil?
