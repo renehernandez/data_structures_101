@@ -25,4 +25,5 @@
 # Gem files
 *.gem
 
-coverage
+# yard docs
+docs/generated/
