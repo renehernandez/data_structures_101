@@ -1,9 +1,9 @@
 engines:
   rubocop:
     enabled: true
-  duplication:
-    enabled: true
-ratings:
-  paths:
-  - lib/**
-  - spec/**
+exclude_paths:
+  - "*.gemspec"
+  - Rakefile
+  - Gemfile
+  - docs/**/*
+  - task/**/*

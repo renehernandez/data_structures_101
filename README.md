@@ -42,7 +42,7 @@ hash = DataStructures101::ChainedHashTable.new
 
 ### Documentation
 
-The website documentation lives at the [github pages](https://renehernandez.github.io/data_structures_101/). You can also chec several posts on [https://bitsofknowledge.net](https://bitsofknowledge.net) where I have discusses some implementations.
+The website documentation lives at the [github pages](https://renehernandez.github.io/data_structures_101/). You can also check several posts on [https://bitsofknowledge.net](https://bitsofknowledge.net) where I have discussed the implementations.
 
 ## Contributing
 

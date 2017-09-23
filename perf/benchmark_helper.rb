@@ -5,6 +5,8 @@ require 'data_structures_101'
 require 'benchmark/ips'
 require 'gruff'
 
+# @author Rene Hernandez
+# @since 0.2.7
 class BenchmarkHelper
   attr_reader :reports
 

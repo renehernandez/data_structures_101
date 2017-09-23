@@ -1,4 +1,4 @@
-Dir.glob("#{File.dirname(__FILE__)}/../spec/perf/hash/*.rb") { |r| load r}
+Dir.glob("#{File.dirname(__FILE__)}/../perf/hash/*.rb") { |r| load r}
 
 namespace :perf do
   namespace :hash do
