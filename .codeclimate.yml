@@ -1,0 +1,9 @@
+engines:
+  rubocop:
+    enabled: true
+  duplication:
+    enabled: true
+ratings:
+  paths:
+  - lib/**
+  - spec/**
