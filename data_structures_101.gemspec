@@ -28,6 +28,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "yard", "~> 0.9"
   spec.add_development_dependency "redcarpet", "~> 3.4"
   spec.add_development_dependency "github-markup", "~> 1.6"
+  spec.add_development_dependency "simplecov", "~> 0.15"
   unless ENV['CI']
     spec.add_development_dependency "benchmark-ips", "~> 2.7"
     spec.add_development_dependency "gruff", "~> 0.7"

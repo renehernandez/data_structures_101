@@ -24,3 +24,5 @@
 
 # Gem files
 *.gem
+
+coverage

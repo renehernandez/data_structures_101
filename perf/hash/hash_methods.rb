@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# @author Rene Hernandez
+# @since 0.2.7
 module HashMethods
   def benchmark_methods
     self.class.each_sample do |sample|
