@@ -15,7 +15,7 @@ script:
 after_script:
 - "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT"
 before_deploy:
-- "cp ./README.md >> ./docs/index.md"
+- "cat ./README.md >> ./docs/index.md"
 - "cd ./docs && bundle install && bundle exec jekyll build"
 deploy:
 - provider: pages
