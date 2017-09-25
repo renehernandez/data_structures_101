@@ -1,3 +1,9 @@
+---
+layout: page
+title: Performance Analysis
+permalink: /performance/
+---
+
 Besides the tests suite, it is also possible to run performance comparisons between implementation variations of the same data structures.
 
 #### What are we benchmarking?

@@ -42,7 +42,9 @@ hash = DataStructures101::ChainedHashTable.new
 
 ### Documentation
 
-The documentation lives at the [github pages](https://renehernandez.github.io/data_structures_101/). For the nitty gritty details of the implementation go to [http://www.rubydoc.info/gems/data_structures_101](http://www.rubydoc.info/gems/data_structures_101). go to You can also go through several posts on [https://bitsofknowledge.net](https://bitsofknowledge.net/tag/data-structures/) where I have discussed the implementations.
+The documentation lives at the [github pages](https://renehernandez.github.io/data_structures_101/). For the nitty gritty details of the implementation go to [http://www.rubydoc.info/gems/data_structures_101](http://www.rubydoc.info/gems/data_structures_101).
+
+You can also go through several posts on [https://bitsofknowledge.net](https://bitsofknowledge.net/tag/data-structures/) where I have discussed the implementations.
 
 ## Contributing
 
