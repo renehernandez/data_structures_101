@@ -16,7 +16,7 @@ To help with the results visualization and spotting patterns on the data, the be
 
 #### BenchmarkHelper
 
-All benchkmark comparisons subclass `BenchmarkHelper` to reuse some utility methods and string helpers. At the same time it brings a common convention about to proceed for the performance testing. You can find the existing benchmark implementations at [https://github.com/renehernandez/data_structures_101/tree/master/perf](https://github.com/renehernandez/data_structures_101/tree/master/spec/perf).
+All benchkmark comparisons subclass `BenchmarkHelper` to reuse some utility methods and string helpers. At the same time it brings a common convention about to proceed for the performance testing. You can find the existing benchmark implementations at [https://github.com/renehernandez/data_structures_101/tree/master/perf](https://github.com/renehernandez/data_structures_101/tree/master/perf).
 
 #### Rake task for performance
 
