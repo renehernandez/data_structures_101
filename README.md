@@ -1,6 +1,6 @@
-# DataStructures101 [![Build Status](https://travis-ci.org/renehernandez/data_structures_101.svg)](https://travis-ci.org/renehernandez/data_structures_101) [![Gem Version](https://badge.fury.io/rb/data_structures_101.svg)](https://badge.fury.io/rb/data_structures_101)
+# DataStructures101 [![Build Status](https://travis-ci.org/renehernandez/data_structures_101.svg)](https://travis-ci.org/renehernandez/data_structures_101) [![Gem Version](https://badge.fury.io/rb/data_structures_101.svg)](https://badge.fury.io/rb/data_structures_101) [![Code Climate](https://codeclimate.com/github/codeclimate/codeclimate/badges/gpa.svg)](https://codeclimate.com/github/codeclimate/codeclimate) [![Test Coverage](https://codeclimate.com/github/codeclimate/codeclimate/badges/coverage.svg)](https://codeclimate.com/github/codeclimate/codeclimate/coverage)
 
-DataStructures101 is a simple gem that groups several implementations of common data structures usually taught in Computer Science courses. The overall goal of the gem is to provide easy to use functionality (trying to match the behavior of existent structures in Ruby) while providing the user with a framework to test and compare their implementations against.
+DataStructures101 is a simple gem that groups several implementations of common data structures usually taught in Computer Science courses. The overall goal of the gem is to provide easy to use functionality (trying to match the behavior of existing structures in Ruby) while providing the user with a framework to test and compare their implementations against.
 
 ## Installation
 
@@ -42,7 +42,9 @@ hash = DataStructures101::ChainedHashTable.new
 
 ### Documentation
 
-The website documentation lives at the [github pages](https://renehernandez.github.io/data_structures_101/). You can also chec several posts on [https://bitsofknowledge.net](https://bitsofknowledge.net) where I have discusses some implementations.
+The documentation lives at the [github pages](https://renehernandez.github.io/data_structures_101/). For the nitty gritty details of the implementation go to [http://www.rubydoc.info/gems/data_structures_101](http://www.rubydoc.info/gems/data_structures_101).
+
+You can also go through several posts on [https://bitsofknowledge.net](https://bitsofknowledge.net/tag/data-structures/) where I have discussed the implementations.
 
 ## Contributing
 

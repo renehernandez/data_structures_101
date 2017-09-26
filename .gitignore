@@ -24,3 +24,11 @@
 
 # Gem files
 *.gem
+
+# yard docs
+docs/generated/
+
+# Jekyll 
+_site
+.sass-cache
+.jekyll-metadata

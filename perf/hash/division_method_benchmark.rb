@@ -3,6 +3,8 @@
 require_relative '../benchmark_helper'
 require_relative 'hash_methods'
 
+# @author Rene Hernandez
+# @since 0.2.7
 class DivisionMethodBenchmark < BenchmarkHelper
   include HashMethods
 
