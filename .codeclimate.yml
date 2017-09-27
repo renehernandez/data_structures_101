@@ -2,13 +2,14 @@ engines:
   rubocop:
     enabled: true
 ratings:
- - lib/**
- - "**.rb"
+  paths:
+  - lib/**
+  - "**.rb"
 exclude_paths:
-  - "*.gemspec"
-  - "*.md"
-  - Rakefile
-  - Gemfile
-  - docs/**/*
-  - task/**/*
-  - coverage/**/*
+- "*.gemspec"
+- "*.md"
+- Rakefile
+- Gemfile
+- docs/**/*
+- task/**/*
+- coverage/**/*
