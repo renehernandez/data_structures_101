@@ -1,6 +1,9 @@
 engines:
   rubocop:
     enabled: true
+ratings:
+ - lib/**
+ - "**.rb"
 exclude_paths:
   - "*.gemspec"
   - "*.md"
