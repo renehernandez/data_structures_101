@@ -6,7 +6,7 @@ env:
   global:
   - CI=true
   - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
-  - CODE_CLIMATE_REPO_TOKEN=b8dab6b569a23ad67ac1f98e15f6b60da1e642be9bbc6e8de5c4d99492654b4d
+  - CC_TEST_REPORTER_ID=b8dab6b569a23ad67ac1f98e15f6b60da1e642be9bbc6e8de5c4d99492654b4d
 before_script:
 - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
 - chmod +x ./cc-test-reporter
