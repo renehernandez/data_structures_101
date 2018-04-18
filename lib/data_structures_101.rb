@@ -6,6 +6,7 @@ require 'data_structures_101/hash/base_hash_table'
 require 'data_structures_101/hash/bucket'
 require 'data_structures_101/chained_hash_table'
 require 'data_structures_101/probe_hash_table'
+require 'data_structures_101/heap'
 
 # @author Rene Hernandez
 # @since 0.1

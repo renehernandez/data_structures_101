@@ -17,6 +17,10 @@ module DataStructures101
       build_heap
     end
 
+    def size
+      @data.size
+    end
+
     def left(i)
       2 * i + 1
     end
@@ -31,8 +35,8 @@ module DataStructures101
 
     private
 
-    def buil_heap
-      start = data.length / 2
+    def build_heap
+      start = @data.length / 2
 
       start.downto(1) { |i| heapify(i) }
     end
