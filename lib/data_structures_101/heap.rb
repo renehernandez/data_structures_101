@@ -21,6 +21,10 @@ module DataStructures101
       @data.size
     end
 
+    def [](i)
+      @data[i]
+    end
+
     def left(i)
       2 * i + 1
     end
@@ -30,7 +34,7 @@ module DataStructures101
     end
 
     def parent(i)
-      i / 2
+      (i - 1) / 2
     end
 
     private
@@ -38,7 +42,7 @@ module DataStructures101
     def build_heap
       start = @data.length / 2
 
-      start.downto(1) { |i| heapify(i) }
+      start.downto(0) { |i| heapify(i) }
     end
 
     def heapify(i)
@@ -50,7 +54,7 @@ module DataStructures101
       head = r if r < @data.size && @heap_check.call(r, head)
 
       if head != i
-        data[i], data[head] = data[head], data[i]
+        @data[i], @data[head] = @data[head], @data[i]
         heapify(head)
       end
     end
