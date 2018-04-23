@@ -40,6 +40,14 @@ To create a hash table using *separate chaining* strategy:
 hash = DataStructures101::ChainedHashTable.new
 ```
 
+### Heap example
+
+To create a *min heap* Heap object
+
+```
+heap = DataStructures101::Heap.new(2,3,1, -10, min_heap: true)
+```
+
 ### Documentation
 
 The documentation lives at the [github pages](https://renehernandez.github.io/data_structures_101/). For the nitty gritty details of the implementation go to [http://www.rubydoc.info/gems/data_structures_101](http://www.rubydoc.info/gems/data_structures_101).
