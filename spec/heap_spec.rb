@@ -26,6 +26,17 @@ RSpec.describe DataStructures101::Heap do
                 expect(heap[heap.parent(i)]).to be >= heap[i]
             end
         end
+
+        context 'push' do
+            let (:fixed_heap) do 
+                DataStructures101::Heap.new(4, 18, 10, 25, 30)
+            end
+            
+            it 'sets the new value in the right location after siftup' do 
+                fixed_heap.push(13)
+                expect(fixed_heap[2]).to eql(13)
+            end
+        end
     end
 
     context 'min heap' do
@@ -37,6 +48,17 @@ RSpec.describe DataStructures101::Heap do
         it 'parents are greater or equal than children' do
             1.upto(9) do |i|
                 expect(heap[heap.parent(i)]).to be <= heap[i]
+            end
+        end
+
+        context 'push' do
+            let (:fixed_heap) do 
+                DataStructures101::Heap.new(25, 18, 10, 4, 30, min_heap: true)
+            end
+            
+            it 'sets the new value in the right location after siftup' do 
+                fixed_heap.push(6)
+                expect(fixed_heap[2]).to eql(6)
             end
         end
     end

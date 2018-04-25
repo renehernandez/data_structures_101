@@ -25,6 +25,14 @@ module DataStructures101
       @data[i]
     end
 
+    def push(*values)
+      values.each do |val|
+        @data.push(val)
+        siftup(@data.size - 1)
+      end
+      self
+    end
+    
     def left(i)
       2 * i + 1
     end
@@ -40,7 +48,7 @@ module DataStructures101
     private
 
     def build_heap
-      start = @data.length / 2
+      start = @data.size / 2
 
       start.downto(0) { |i| heapify(i) }
     end
@@ -58,5 +66,15 @@ module DataStructures101
         heapify(head)
       end
     end
+
+    def siftup(idx)
+      p = parent(idx)
+
+      if @heap_check.call(idx, p)
+        @data[idx], @data[p] = @data[p], @data[idx]
+        siftup(p)
+      end
+    end
+    
   end
 end
