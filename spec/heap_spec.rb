@@ -21,6 +21,10 @@ RSpec.describe DataStructures101::Heap do
             DataStructures101::Heap.new(*args) 
         end
 
+        let (:fixed_heap) do 
+            DataStructures101::Heap.new(4, 18, 10, 25, 30)
+        end
+
         it 'parents are greater or equal than children' do
             1.upto(9) do |i|
                 expect(heap[heap.parent(i)]).to be >= heap[i]
@@ -28,13 +32,19 @@ RSpec.describe DataStructures101::Heap do
         end
 
         context 'push' do
-            let (:fixed_heap) do 
-                DataStructures101::Heap.new(4, 18, 10, 25, 30)
-            end
-            
             it 'sets the new value in the right location after siftup' do 
                 fixed_heap.push(13)
                 expect(fixed_heap[2]).to eql(13)
+            end
+        end
+
+        context 'pop' do 
+            it 'returns the root of the heap and reorganizes the heap' do
+                result = fixed_heap.pop
+                expect(result).to eql(30)
+                1.upto(3) do |i|
+                    expect(heap[heap.parent(i)]).to be >= heap[i]
+                end
             end
         end
     end
@@ -45,6 +55,10 @@ RSpec.describe DataStructures101::Heap do
             DataStructures101::Heap.new(*args, min_heap: true) 
         end
 
+        let (:fixed_heap) do 
+            DataStructures101::Heap.new(25, 18, 10, 4, 30, min_heap: true)
+        end
+
         it 'parents are greater or equal than children' do
             1.upto(9) do |i|
                 expect(heap[heap.parent(i)]).to be <= heap[i]
@@ -52,13 +66,19 @@ RSpec.describe DataStructures101::Heap do
         end
 
         context 'push' do
-            let (:fixed_heap) do 
-                DataStructures101::Heap.new(25, 18, 10, 4, 30, min_heap: true)
-            end
-            
             it 'sets the new value in the right location after siftup' do 
                 fixed_heap.push(6)
                 expect(fixed_heap[2]).to eql(6)
+            end
+        end
+
+        context 'pop' do 
+            it 'returns the root of the heap and reorganizes the heap' do
+                result = fixed_heap.pop
+                expect(result).to eql(4)
+                1.upto(3) do |i|
+                    expect(heap[heap.parent(i)]).to be <= heap[i]
+                end
             end
         end
     end

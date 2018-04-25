@@ -32,6 +32,13 @@ module DataStructures101
       end
       self
     end
+
+    def pop
+      result = @data.first
+      @data[0] = @data.pop
+      heapify(0)
+      result
+    end
     
     def left(i)
       2 * i + 1
@@ -75,6 +82,6 @@ module DataStructures101
         siftup(p)
       end
     end
-    
+
   end
 end
