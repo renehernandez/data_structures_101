@@ -6,11 +6,14 @@ module DataStructures101
   # @since 0.3
   class Heap
 
+    attr_reader :min_heap
+
     def initialize(*args, min_heap: false)
       @data = args
+      @min_heap = min_heap
       @heap_check = ->(i, j) { return @data[i] >= @data[j] }
 
-      if min_heap
+      if @min_heap
         @heap_check = ->(i, j) { return @data[i] <= @data[j] }
       end
 
@@ -25,6 +28,27 @@ module DataStructures101
       @data[i]
     end
 
+    def push(*values)
+      values.each do |val|
+        @data.push(val)
+        upheap(@data.size - 1)
+      end
+      self
+    end
+
+    def pop
+      result = @data.first
+      @data[0] = @data.pop
+      heapify(0)
+      result
+    end
+
+    def merge(heap)
+      new_array = @data + heap.instance_variable_get(:@data)
+
+      Heap.new(new_array, min_heap: self.min_heap)
+    end
+    
     def left(i)
       2 * i + 1
     end
@@ -40,7 +64,7 @@ module DataStructures101
     private
 
     def build_heap
-      start = @data.length / 2
+      start = @data.size / 2
 
       start.downto(0) { |i| heapify(i) }
     end
@@ -58,5 +82,15 @@ module DataStructures101
         heapify(head)
       end
     end
+
+    def upheap(idx)
+      p = parent(idx)
+
+      if @heap_check.call(idx, p)
+        @data[idx], @data[p] = @data[p], @data[idx]
+        upheap(p)
+      end
+    end
+
   end
 end
