@@ -15,6 +15,30 @@ RSpec.describe DataStructures101::Heap do
         end
     end
 
+    context 'merge' do 
+        let(:max_heap) do 
+            args = 10.times.map { Random.rand(10) }
+            DataStructures101::Heap.new(*args) 
+        end
+
+        let(:min_heap) do 
+            args = 10.times.map { Random.rand(10) }
+            DataStructures101::Heap.new(*args, min_heap: true) 
+        end
+
+        it 'creates a max_heap' do
+            new_heap = max_heap.merge(min_heap)
+            expect(new_heap).to be_a DataStructures101::Heap
+            expect(new_heap.min_heap).to be false
+        end
+
+        it 'creates a min_heap' do
+            new_heap = min_heap.merge(max_heap)
+            expect(new_heap).to be_a DataStructures101::Heap
+            expect(new_heap.min_heap).to be true
+        end
+    end
+
     context 'max heap' do
         let(:heap) do 
             args = 10.times.map { Random.rand(10) }
